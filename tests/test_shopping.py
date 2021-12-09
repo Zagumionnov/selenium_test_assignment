@@ -6,6 +6,14 @@ from selenium.webdriver.support import expected_conditions as EC # noqa
 
 
 def test_shopping(driver):
+    """Finds the price of an item of a specific color and with
+    the most reviews on two different sites.
+
+    :param driver: arg1
+    :type driver: WebDriver
+
+    :return: None
+    """
 
     product = 'OnePlus 8T'
     color = 'Green'
