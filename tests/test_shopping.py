@@ -2,9 +2,9 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC # noqa
-from selenium.webdriver.common.keys import Keys
 
 
 def test_shopping(driver):
@@ -52,7 +52,7 @@ def test_shopping(driver):
             By.XPATH, "//*[@id='widgets-view-email-modal-mount']/div/div/div[1]/div/div/div/div/button"
         ))).click()
 
-        time.sleep(3)
+        time.sleep(3)  # fail
         search_box = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
                 By.XPATH, "//*[@id='gh-search-input']"
         )))
