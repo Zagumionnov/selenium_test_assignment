@@ -1,5 +1,3 @@
-import time
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -12,7 +10,7 @@ def test_shopping(driver):
     product = 'OnePlus 8T'
     color = 'Green'
     amazon_price = 0
-    bestbuy_price = 0
+    bestbuy_price = 100
 
     try:
         driver.get('https://www.amazon.com/')
@@ -52,10 +50,10 @@ def test_shopping(driver):
             By.XPATH, "//*[@id='widgets-view-email-modal-mount']/div/div/div[1]/div/div/div/div/button"
         ))).click()
 
-        time.sleep(3)  # fail
-        search_box = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((
-                By.XPATH, "//*[@id='gh-search-input']"
-        )))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((
+            By.XPATH, "//*[@id='gh-search-input']"
+        ))).click()
+        search_box = driver.find_element(By.XPATH, "//*[@id='gh-search-input']")
         search_box.send_keys(product)
         search_box.send_keys(Keys.RETURN)
 
